@@ -1,0 +1,11 @@
+.card {
+
+    &_wrapper {
+        transition: 0.5s ease-in-out;
+    }
+
+    &:hover &_wrapper {
+        transform: scale(1.1);
+        transition: 0.5s ease-in-out;
+    }
+}

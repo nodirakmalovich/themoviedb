@@ -1,15 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import Footer from "../components/footer/footer";
 
 function DashboardLayout() {
   return (
     <div>
       <Navbar />
-      <div className="container">
-        <Outlet />
-      </div>
-      <h1>Footer</h1>
+      <Outlet />
+      <Footer />
     </div>
   );
 }
