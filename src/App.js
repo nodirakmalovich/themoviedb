@@ -3,6 +3,8 @@ import DashboardLayout from "./layouts/DashboardLayout"
 import './App.css';
 import Home from './pages/Home/Home';
 import '@fontsource/source-sans-pro';
+import SearchedMovies from './pages/searchedMovies/searchedMovies';
+import MoviesPages from './pages/Movies/movies';
 
 function App() {
   return <BrowserRouter>
@@ -10,7 +12,9 @@ function App() {
       <Route element={<DashboardLayout />}>
         <Route path='/' element={<Home />} />
         <Route path='/movies' element={<h2>Movies page</h2>} />
-        <Route path='/movie/now-playing' element={<h2>Movies page now playing</h2>} />
+        <Route path='/search' element={<SearchedMovies />} />
+        <Route path='/movie' element={<MoviesPages />} />
+
       </Route>
     </Routes>
   </BrowserRouter>

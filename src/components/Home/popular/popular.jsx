@@ -1,8 +1,8 @@
 import UseData from "../../../hooks/useData"
 import { format } from 'date-fns';
-import dot from '../../../assets/dot.svg'
 
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import MainCard from "../../mainCard/mainCard";
 
 
 
@@ -10,7 +10,9 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 export default function PopularMovies() {
 
 
-    const { PopularMoviesData, imageUrl } = UseData()
+    const { PopularMoviesData } = UseData()
+
+    console.log(PopularMoviesData);
 
 
 
@@ -24,7 +26,7 @@ export default function PopularMovies() {
 
     const categories = [
         {
-            name: 'Popular',
+            name: '',
 
         },
 
@@ -42,7 +44,7 @@ export default function PopularMovies() {
                                 {categories.map(({ name }) => (
                                     <Tab
                                         key={name}
-                                        className="category_list rounded-full py-1 px-5 h-[28px] font-semibold outline-none data-[selected]:bg-[#032541] data-[selected]:text-[#1ed5c4]"
+                                        className="category_list rounded-full py-1 px-5 h-[28px] font-semibold outline-none data-[selected]:bg-[#032541] data-[selected]:text-[#1ed5c4] w-[116px]"
                                     >
                                         {name}
                                     </Tab>
@@ -61,34 +63,14 @@ export default function PopularMovies() {
                 {
                     PopularMoviesData?.map((movie, index) => {
                         return (
-                            <div key={index}>
-                                <div className="card relative w-[150px] ">
-
-                                    <img className="icon absolute top-[5px]  right-[5px] rounded-[50%] w-[25.6px] h-[25.6px]" src={dot} alt="" />
-
-                                    <img src={imageUrl + movie?.poster_path} alt={movie?.original_name} className="rounded-[8px] w-[150px] h-[225px]" />
-
-                                    <div className="absolute top-[210px] w-[34px] h-[34px] bg-black rounded-[50%] left-[10px] flex justify-center items-center">
-                                        <p className="text-white text-[16px] relative">
-                                            {Math.floor(movie.vote_average * 10)}
-                                            <span className="text-[9.6px] absolute">%</span>
-
-                                        </p>
-                                    </div>
-
-                                    <div className="content pt-[26px] px-[10px]">
-
-                                        <p className="w-[130px] font-[700] text-black">
-                                            {movie?.original_name}
-                                        </p>
-
-                                        <DateFormatter date={movie.first_air_date} />
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            <MainCard
+                                imageSrc={movie.poster_path}
+                                altText={movie.original_name}
+                                key={index}
+                                vote={movie.vote_average}
+                                title={movie.original_name}
+                                releseDate={movie.first_air_date}
+                            />
 
                         )
                     })

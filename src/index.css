@@ -9,9 +9,9 @@ body {
 .my-container {
     width: 1300px !important;
     margin: 0 auto !important;
-
 }
 
-img{
-    object-fit:  cover;
+img {
+    object-fit: cover;
+    cursor: pointer;
 }

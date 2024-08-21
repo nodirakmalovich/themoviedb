@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import UseData from '../../../hooks/useData'
 import './hero.scss'
+import { useNavigate } from 'react-router-dom';
 
 export default function Hero() {
 
     const { moviesData, imageUrl, discoverMoviesData } = UseData()
 
     const [randomIndex, setRandomIndex] = useState(null);
+
+    const searchRef = useRef()
+    const route = useNavigate()
 
     useEffect(() => {
         if (discoverMoviesData.length > 0) {
@@ -17,6 +21,14 @@ export default function Hero() {
 
 
     const movie = discoverMoviesData[randomIndex];
+
+
+
+    const searchHandle = (e) => {
+        e.preventDefault()
+
+        route(`/search?query=${searchRef.current.value}`)
+    }
 
 
     return (
@@ -44,11 +56,11 @@ export default function Hero() {
 
                         <form className='relative '>
                             <label>
-                                <input className='hero_row_input ' type="text" placeholder='Search for a movie, tv show, person......' />
+                                <input ref={searchRef}  className='hero_row_input ' type="text" placeholder='Search for a movie, tv show, person......' />
 
                             </label>
 
-                            <input className='absolute top-0 z-10 hero_row_input_search ' type="submit" value={"Search"} />
+                            <input onClick={searchHandle} className='absolute top-0 z-10 hero_row_input_search ' type="submit" value={"Search"} />
 
                         </form>
                     </div>

@@ -1,23 +1,15 @@
 import UseData from "../../../hooks/useData"
-import dot from '../../../assets/dot.svg'
 import './trandingMovies.scss'
-import { format } from 'date-fns';
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { Tab, TabGroup, TabList } from '@headlessui/react'
+import MainCard from "../../mainCard/mainCard";
 
 
 
 export default function TrendingMovies() {
 
-    const { trendingMoviesData, imageUrl, getTrendingMovies } = UseData()
+    const { trendingMoviesData, getTrendingMovies } = UseData()
 
 
-    const DateFormatter = ({ date }) => {
-        return (
-            <p>
-                {format(new Date(date), 'MMM dd, yyyy')}
-            </p>
-        );
-    };
 
     const categories = [
         {
@@ -33,21 +25,21 @@ export default function TrendingMovies() {
     ]
 
     const handleTabChange = (action) => {
-        getTrendingMovies(action); 
+        getTrendingMovies(action);
     };
 
 
 
 
     return (
-        <div className="my-container pt-[30px] px-10">
+        <div className="my-container pt-[30px] px-10 tranding_movies">
             <div className="flex gap-[20px] items-center">
                 <p className="text-2xl text-black font-semibold">Trending</p>
 
                 <div className="flex  justify-center ">
                     <div className=" h-[28px] border-[#032541] border-[1px] rounded-[30px] flex items-center justify-between">
                         <TabGroup onChange={(index) => handleTabChange(categories[index].action)}>
-                            <TabList className="flex gap-4 items-center justify-between">
+                            <TabList className="flex gap-4 items-center justify-between py-2">
                                 {categories.map(({ name }) => (
                                     <Tab
                                         key={name}
@@ -65,39 +57,19 @@ export default function TrendingMovies() {
             </div>
 
 
-            <div className=" flex py-5 overflow-x-auto gap-[20px] scrolling">
+            <div className=" flex  py-5 overflow-x-auto gap-[20px] scrolling ">
 
                 {
                     trendingMoviesData?.map((movie, index) => {
                         return (
-                            <div key={index}>
-                                <div className="card relative w-[150px] ">
-
-                                    <img className="icon absolute top-[5px]  right-[5px] rounded-[50%] w-[25.6px] h-[25.6px]" src={dot} alt="" />
-
-                                    <img src={imageUrl + movie.poster_path} alt={movie.title} className="rounded-[8px]" />
-
-                                    <div className="absolute top-[210px] w-[34px] h-[34px] bg-black rounded-[50%] left-[10px] flex justify-center items-center">
-                                        <p className="text-white text-[16px] relative">
-                                            {Math.floor(movie.vote_average * 10)}
-                                            <span className="text-[9.6px] absolute">%</span>
-
-                                        </p>
-                                    </div>
-
-                                    <div className="content pt-[26px] px-[10px]">
-
-                                        <p className="w-[130px] font-[700] text-black">
-                                            {movie.title}
-                                        </p>
-
-                                        <DateFormatter date={movie.release_date} />
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            <MainCard
+                                imageSrc={ movie.poster_path}
+                                altText={movie.title}
+                                key={index}
+                                vote={movie.vote_average}
+                                title={movie.title}
+                                releseDate={movie.release_date}
+                            />
 
                         )
                     })

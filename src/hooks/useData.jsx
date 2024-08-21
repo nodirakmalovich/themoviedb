@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLocation } from "react";
+import SearchedMovies from "../pages/searchedMovies/searchedMovies";
 
 export default function UseData() {
 
@@ -8,6 +9,9 @@ export default function UseData() {
     const [trendingMoviesData, settrendingMoviesData] = useState([])
     const [latestMoviesData, setLatestMoviesData] = useState([])
     const [PopularMoviesData, setPopularMoviesData] = useState([])
+    const [PopularMovies, setPopularMovies] = useState([])
+
+
 
 
     const API_KEY = "d9597dea5ef13f08402498b3f088e59d"
@@ -39,7 +43,7 @@ export default function UseData() {
 
 
 
-    function getTrendingMovies( action = 'day') {
+    function getTrendingMovies(action = 'day') {
         axios.get(`https://api.themoviedb.org/3/trending/movie/${action}?api_key=${API_KEY}`)
             .then(res => {
                 settrendingMoviesData(res?.data.results)
@@ -76,7 +80,16 @@ export default function UseData() {
     }
 
 
-
+    function getPopular() {
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
+            .then(res => {
+                console.log(res);
+                setPopularMovies(res?.data.results)
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }
 
 
     useEffect(() => {
@@ -99,7 +112,12 @@ export default function UseData() {
         getPopularMovies()
     }, [])
 
+    
+    useEffect(() => {
+        getPopular()
+    }, [])
 
 
-    return { moviesData, imageUrl, latestMoviesData, PopularMoviesData, discoverMoviesData, trendingMoviesData, getTrendingMovies }
+
+    return { moviesData, imageUrl, latestMoviesData, PopularMoviesData, discoverMoviesData, trendingMoviesData, getTrendingMovies, PopularMovies}
 }
