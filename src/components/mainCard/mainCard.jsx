@@ -4,7 +4,7 @@ import UseData from '../../hooks/useData'
 import { format } from 'date-fns';
 
 
-export default function MainCard({ key, imageSrc, altText, vote, title, releseDate }) {
+export default function MainCard({ key, imageSrc, altText, vote, title, releseDate, onClick }) {
 
     const { imageUrl } = UseData()
 
@@ -19,7 +19,7 @@ export default function MainCard({ key, imageSrc, altText, vote, title, releseDa
 
 
     return (
-        <div key={key}>
+        <div key={key} onClick={onclick}>
             <div className="card relative  w-[150px]">
 
                 <img className="icon absolute top-[5px]  right-[5px] rounded-[50%] w-[25.6px] h-[25.6px]" src={dot} alt="dot" />

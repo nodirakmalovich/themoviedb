@@ -24,15 +24,19 @@ function Navbar() {
         },
         {
           id: 2,
-          title: 'Now Playing'
+          title: 'Now Playing',
+          pages: '/movie/now-playing'
+
         },
         {
           id: 3,
-          title: 'Upcoming'
+          title: 'Upcoming',
+          pages: '/movie/upcoming'
         },
         {
           id: 4,
-          title: 'Top Rated'
+          title: 'Top Rated',
+          pages: '/movie/top-rated'
         },
       ]
     },
@@ -43,19 +47,23 @@ function Navbar() {
       childrens: [
         {
           id: 1,
-          title: 'Popular'
+          title: 'Popular',
+          pages: '/tv'
         },
         {
           id: 2,
-          title: 'Airing Today'
+          title: 'Airing Today',
+          pages: '/tv/airing-today'
         },
         {
           id: 3,
-          title: 'On TV'
+          title: 'On TV',
+          pages: '/tv/on-the-air'
         },
         {
           id: 4,
-          title: 'Top Rated'
+          title: 'Top Rated',
+          pages: '/tv/top-rated'
         },
       ]
     },
@@ -66,7 +74,8 @@ function Navbar() {
       childrens: [
         {
           id: 1,
-          title: 'Popular People'
+          title: 'Popular People',
+          pages: '/person'
         }
       ]
     },
@@ -157,6 +166,7 @@ function Navbar() {
               <a className="text-white fw-semibold text-[14.4px]" href="#">N</a>
             </div>
             <img className="cursor-pointer w-[29.px] h-[29.1px]" src={search} alt="search" />
+
           </div>
         </div>
       </div>

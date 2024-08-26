@@ -3,20 +3,17 @@ import MovieCardSec from "../../components/movieCard/movieCard";
 import Category from "../../components/categry/categry";
 import { useNavigate } from "react-router-dom";
 
-export default function MoviesPages() {
+export default function TvPopular() {
 
-
-
-    const { PopularMovies } = UseData()
+    const { tvPopular } = UseData()
     const route = useNavigate();
 
 
+    
     function handleSingleMovie(movieId) {
 
-        route(`/movie-info/${movieId}`);
+        route(`/tv-info/${movieId}`);
     }
-
-
 
     return (
         <div className="">
@@ -33,17 +30,16 @@ export default function MoviesPages() {
                     <div className="popular_right w-[75%]">
                         <div className="popular_right_wrapper grid grid-cols-5 gap-[30px] justify-between">
                             {
-                                PopularMovies.map((movie, index) => {
+                                tvPopular.map((movie, index) => {
                                     return (
                                         <div key={index} className="shadow-lg rounded-[8px] ">
                                             <MovieCardSec
                                                 imageSrc={movie.poster_path}
-                                                altText={movie.title}
+                                                altText={movie.name}
                                                 key={index}
                                                 vote={movie.vote_average}
-                                                title={movie.title}
-                                                releseDate={movie.release_date}
-                                                id={movie.id}
+                                                title={movie.name}
+                                                releseDate={movie.first_air_date}
                                                 onClick={() => { handleSingleMovie(movie.id) }}
                                             />
                                         </div>

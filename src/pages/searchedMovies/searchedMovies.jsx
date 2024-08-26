@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SearchedMovieCard from '../../components/searchedMovieCard/searchedMovieCard';
 import { IoMdSearch } from "react-icons/io";
 
@@ -9,6 +9,14 @@ export default function SearchedMovies() {
     const [searchQuery, setSearchQuery] = useState(query.get('query') || '');
     const [searchedMoviesData, setSearchedMoviesData] = useState([]);
     const searchRef = useRef(null);
+
+    const route = useNavigate();
+
+
+    function handleSingleMovie(movieId) {
+
+        route(`/movie-info/${movieId}`);
+    }
 
     const searchList = [
         { title: "Movies" },
@@ -57,8 +65,9 @@ export default function SearchedMovies() {
                 </div>
             </div>
 
-            <div className='flex gap-[30px] my-container pt-[100px] px-10'>
+            <div className='flex gap-[30px] my-container pt-[50px] px-10'>
                 <div className="leftside w-[300px]">
+
                     <div className="leftside_wrapper w-[260px] border-[#e3e3e3] border-[1px] rounded-[8px]">
                         <div className="leftside_wrapper_header bg-[#01b3e4] p-5 text-white font-semibold rounded-t-[8px]">
                             Search Results
@@ -71,11 +80,12 @@ export default function SearchedMovies() {
                             </ul>
                         </div>
                     </div>
+
                 </div>
 
                 <div>
                     {searchedMoviesData.map((movie, index) => (
-                        <div key={index} className="searchedMovies">
+                        <div onClick={() => { handleSingleMovie(movie.id) }} key={index} className="searchedMovies shadow-lg">
                             <SearchedMovieCard
                                 imageSrc={movie.poster_path}
                                 altText={movie.title}

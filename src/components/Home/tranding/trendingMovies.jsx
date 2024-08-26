@@ -2,6 +2,7 @@ import UseData from "../../../hooks/useData"
 import './trandingMovies.scss'
 import { Tab, TabGroup, TabList } from '@headlessui/react'
 import MainCard from "../../mainCard/mainCard";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,6 +10,7 @@ export default function TrendingMovies() {
 
     const { trendingMoviesData, getTrendingMovies } = UseData()
 
+    const route = useNavigate();
 
 
     const categories = [
@@ -29,25 +31,34 @@ export default function TrendingMovies() {
     };
 
 
+    function handleSingleMovie(movieId) {
+
+        route(`/movie-info/${movieId}`);
+    }
 
 
     return (
         <div className="my-container pt-[30px] px-10 tranding_movies">
             <div className="flex gap-[20px] items-center">
-                <p className="text-2xl text-black font-semibold">Trending</p>
 
-                <div className="flex  justify-center ">
+                <div className="flex  justify-center items-center gap-5">
+
+                    <p className="text-2xl text-black font-semibold">Trending</p>
                     <div className=" h-[28px] border-[#032541] border-[1px] rounded-[30px] flex items-center justify-between">
                         <TabGroup onChange={(index) => handleTabChange(categories[index].action)}>
-                            <TabList className="flex gap-4 items-center justify-between py-2">
-                                {categories.map(({ name }) => (
-                                    <Tab
-                                        key={name}
-                                        className="category_list rounded-full py-1 px-5 h-[28px] font-semibold outline-none data-[selected]:bg-[#032541] data-[selected]:text-[#1ed5c4]"
-                                    >
-                                        {name}
-                                    </Tab>
-                                ))}
+                            <TabList className="flex gap-4">
+                                <div className='items-center flex gap-[20px]'>
+                                    <div className='gap-0 rounded-full border-slate-900 border-[1px]'>
+                                        {categories.map(({ name }) => (
+                                            <Tab
+                                                key={name}
+                                                className="rounded-full py-[2px] px-[20px] text-slate-900 font-semibold cursor-pointer focus:outline-none data-[selected]:bg-[rgb(3,37,65)] data-[selected]:text-teal-600"
+                                            >
+                                                {name}
+                                            </Tab>
+                                        ))}
+                                    </div>
+                                </div>
                             </TabList>
 
                         </TabGroup>
@@ -62,14 +73,17 @@ export default function TrendingMovies() {
                 {
                     trendingMoviesData?.map((movie, index) => {
                         return (
-                            <MainCard
-                                imageSrc={ movie.poster_path}
-                                altText={movie.title}
-                                key={index}
-                                vote={movie.vote_average}
-                                title={movie.title}
-                                releseDate={movie.release_date}
-                            />
+                            <div key={index} onClick={() => { handleSingleMovie(movie.id) }}>
+
+                                <MainCard
+                                    imageSrc={movie.poster_path}
+                                    altText={movie.title}
+                                    key={index}
+                                    vote={movie.vote_average}
+                                    title={movie.title}
+                                    releseDate={movie.release_date}
+                                />
+                            </div>
 
                         )
                     })

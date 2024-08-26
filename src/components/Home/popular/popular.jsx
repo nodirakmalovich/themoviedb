@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import MainCard from "../../mainCard/mainCard";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,9 +11,9 @@ import MainCard from "../../mainCard/mainCard";
 export default function PopularMovies() {
 
 
+    const route = useNavigate();
     const { PopularMoviesData } = UseData()
 
-    console.log(PopularMoviesData);
 
 
 
@@ -31,6 +32,12 @@ export default function PopularMovies() {
         },
 
     ]
+
+
+    function handleSingleMovie(movieId) {
+
+        route(`/tv-info/${movieId}`);
+    }
 
     return (
         <div className="my-container px-10 pt-[400px]">
@@ -63,14 +70,18 @@ export default function PopularMovies() {
                 {
                     PopularMoviesData?.map((movie, index) => {
                         return (
-                            <MainCard
-                                imageSrc={movie.poster_path}
-                                altText={movie.original_name}
-                                key={index}
-                                vote={movie.vote_average}
-                                title={movie.original_name}
-                                releseDate={movie.first_air_date}
-                            />
+                            <div key={index}
+                                onClick={() => { handleSingleMovie(movie.id) }}>
+
+                                <MainCard
+                                    imageSrc={movie.poster_path}
+                                    altText={movie.original_name}
+
+                                    vote={movie.vote_average}
+                                    title={movie.original_name}
+                                    releseDate={movie.first_air_date}
+                                />
+                            </div>
 
                         )
                     })

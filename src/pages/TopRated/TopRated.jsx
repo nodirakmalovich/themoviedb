@@ -3,20 +3,16 @@ import MovieCardSec from "../../components/movieCard/movieCard";
 import Category from "../../components/categry/categry";
 import { useNavigate } from "react-router-dom";
 
-export default function MoviesPages() {
+export default function Toprated() {
 
-
-
-    const { PopularMovies } = UseData()
+    const { topRatedMovies } = UseData()
     const route = useNavigate();
 
-
+    
     function handleSingleMovie(movieId) {
 
         route(`/movie-info/${movieId}`);
     }
-
-
 
     return (
         <div className="">
@@ -33,7 +29,7 @@ export default function MoviesPages() {
                     <div className="popular_right w-[75%]">
                         <div className="popular_right_wrapper grid grid-cols-5 gap-[30px] justify-between">
                             {
-                                PopularMovies.map((movie, index) => {
+                                topRatedMovies.map((movie, index) => {
                                     return (
                                         <div key={index} className="shadow-lg rounded-[8px] ">
                                             <MovieCardSec
@@ -43,7 +39,6 @@ export default function MoviesPages() {
                                                 vote={movie.vote_average}
                                                 title={movie.title}
                                                 releseDate={movie.release_date}
-                                                id={movie.id}
                                                 onClick={() => { handleSingleMovie(movie.id) }}
                                             />
                                         </div>
