@@ -1,10 +1,18 @@
 import { CircularProgress } from '@mui/material';
 import UseData from "../../hooks/useData";
 import CastCard from '../../components/CastCard/CastCard';
+import { useNavigate } from 'react-router-dom';
 
 export default function SingleTvSeries() {
 
     const { singleTvSeries, imageUrl, singleTvSeriesCrew, singleTvseriesCast, keywords } = UseData()
+
+    const route = useNavigate()
+    
+    const handlePerson = (movieId) => {
+        route(`/person/${movieId}`)
+    }
+
 
 
     return (
@@ -108,7 +116,7 @@ export default function SingleTvSeries() {
                         {
                             singleTvseriesCast?.map((item, index) => {
                                 return (
-                                    <div key={index}>
+                                    <div key={index} onClick={() => {handlePerson(item.id)}}>
                                         <CastCard
                                             image={item.profile_path}
                                             altText={item.name}

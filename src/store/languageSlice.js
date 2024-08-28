@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  language: 'en', // Default til - ingliz tili
+  language: 'en', 
 };
 
 export const languageSlice = createSlice({
@@ -14,7 +14,6 @@ export const languageSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { setLanguage } = languageSlice.actions;
 
 export default languageSlice.reducer;
