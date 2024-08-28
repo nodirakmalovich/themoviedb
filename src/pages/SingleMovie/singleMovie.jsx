@@ -5,17 +5,19 @@ import CastCard from '../../components/CastCard/CastCard';
 import { useNavigate } from 'react-router-dom';
 import ReviewCard from '../../components/reviewCard/reviewCard';
 import RecomendCard from '../../components/recomendCard/recomendCard';
+import { useTranslation } from 'react-i18next';
 
 export default function SingleMovie() {
 
     const { singleMovie, imageUrl, singleMovieCrew, singleMovieCast, keywords, singleMovieReview, singleMovieRecomendation } = UseData()
+    const { t } = useTranslation()
 
     const route = useNavigate()
 
     const handlePerson = (movieId) => {
         route(`/person/${movieId}`)
     }
-    
+
 
     function handleSingleMovie(movieId) {
 
@@ -23,25 +25,24 @@ export default function SingleMovie() {
     }
 
 
-    console.log(singleMovieRecomendation);
 
     return (
         <div key={singleMovie.id}>
             <SingleMoviesCategory />
 
-            <div className="relative box-border h-[655px] ">
-                <div className="back absolute z-0 top-0 left-0 right-0 bottom-0 bg-gray-500/50"></div>
-                <div className="image relative ">
-                    <img className="absolute w-full object-cover z-[-10] h-[655px]" src={imageUrl + singleMovie.backdrop_path} alt={singleMovie.title} />
+            <div className="relative box-border xl:h-[655px]  ">
+                <div className="back absolute z-0 top-0 left-0 right-0 bottom-0 bg-black xl:bg-gray-500/50"></div>
+                <div className="image relative  ">
+                    <img className="absolute w-full object-cover z-[-10] xl:h-[655px] xl:block hidden" src={imageUrl + singleMovie.backdrop_path} alt={singleMovie.title} />
                 </div>
-                <div className="my-container px-10  py-[30px] z-[0] relative flex justify-between flex-wrap">
+                <div className="my-container px-10  py-[30px] z-[0] relative flex lg:justify-between justify-center gap-5 flex-wrap">
 
-                    <div className="movie w-[25%]">
+                    <div className="movie md:w-[25%]  ">
                         <img className="w-[300px] h-[450px] rounded-lg" src={imageUrl + singleMovie.poster_path} alt={singleMovie.title} />
 
                     </div>
 
-                    <div className="w-[73%]">
+                    <div className="md:w-[73%]">
 
                         <p className="text-[35.2px] font-[700] text-white hover:text-gray-400 cursor-pointer">
                             {singleMovie.title} <span>({singleMovie.release_date?.slice(0, 4)})</span>
@@ -96,12 +97,12 @@ export default function SingleMovie() {
                                 }
                             </p>
                         </div>
-                        <div className="mt-6 grid grid-cols-3 gap-5">
+                        <div className="mt-6 lg:grid grid-cols-3 gap-5 hidden">
                             {
                                 singleMovieCrew?.slice(0, 11).map((item, index) => {
                                     return (
-                                        <div >
-                                            <p key={index} className='text-white text-[16px] '>
+                                        <div key={index}>
+                                            <p className='text-white text-[16px] '>
                                                 {item.name}
                                             </p>
                                             <p className='text-white text-[14.4px] '>
@@ -121,8 +122,8 @@ export default function SingleMovie() {
                     Top Billed Cast
                 </p>
 
-                <div className="row flex items-start">
-                    <div className='w-[80%]' >
+                <div className="row md:flex items-start">
+                    <div className='md:w-[80%]' >
 
                         <div className="cast flex overflow-hidden gap-3 overflow-x-auto pb-5 w-[100%]">
                             {
@@ -182,7 +183,7 @@ export default function SingleMovie() {
                             {
                                 singleMovieRecomendation.map((item, index) => {
                                     return (
-                                        <div key={index} className='w-[250px]' onClick={() => {handleSingleMovie(item.id)}}>
+                                        <div key={index} className='w-[250px]' onClick={() => { handleSingleMovie(item.id) }}>
 
                                             <RecomendCard
                                                 altText={item.title}
@@ -200,7 +201,7 @@ export default function SingleMovie() {
 
                     </div>
 
-                    <div className="info w-[25%] ps-5">
+                    <div className="info w-[25%] ps-5 hidden md:block">
                         <p className='font-semibold mt-3'>
                             Status
                             <br />

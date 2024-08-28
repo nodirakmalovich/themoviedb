@@ -38,87 +38,89 @@ export default function SinglePerson() {
             <SingleMoviesCategory />
 
             <div className="my-container px-10 border-t-[1px] pt-5">
-                <div className="content flex  justify-between">
-                    <div className="!w-[300px] ">
+                <div className="content flex flex-wrap xl:flex-nowrap xl:justify-between justify-center">
+                    <div className=" lg:w-[300px] w-full ">
 
                         <img
-                            className="w-[300px] h-[450px] rounded-lg"
+                            className="w-[300px] h-[450px] rounded-lg text-center"
                             src={imageUrl + singlePerson.profile_path}
                             alt={singlePerson.name} />
 
+                        <div className="hidden xl:block">
 
-                        <p className="text-[20.8px] font-[600] mt-8 mb-5">
-                            Personal Info
-                        </p>
-
-                        <div>
-                            <p className="text-[16px] font-[600] mt-2 ">
-                                Known For
+                            <p className="text-[20.8px] font-[600] mt-8 mb-5">
+                                Personal Info
                             </p>
-                            <p>
-                                {singlePerson.known_for_department}
-                            </p>
-                        </div>
+
+                            <div>
+                                <p className="text-[16px] font-[600] mt-2 ">
+                                    Known For
+                                </p>
+                                <p>
+                                    {singlePerson.known_for_department}
+                                </p>
+                            </div>
 
 
-                        <div>
-                            <p className="text-[16px] font-[600] mt-2 ">
-                                Known Credits
+                            <div>
+                                <p className="text-[16px] font-[600] mt-2 ">
+                                    Known Credits
 
-                            </p>
-                            <p>
-                                {singlePersonCast.length}
-                            </p>
-                        </div>
-
-
-                        <div>
-                            <p className="text-[16px] font-[600] mt-2 ">
-                                Gender
-                            </p>
-                            <p>
-                                {singlePerson.gender === 2 ? "Male" : "Female"}
-                            </p>
-                        </div>
+                                </p>
+                                <p>
+                                    {singlePersonCast.length}
+                                </p>
+                            </div>
 
 
-                        <div>
-                            <p className="text-[16px] font-[600] mt-2 ">
-                                Birthday
-                            </p>
-                            <p>
-                                {formattedDate} ({age} years old)
-                            </p>
-                        </div>
+                            <div>
+                                <p className="text-[16px] font-[600] mt-2 ">
+                                    Gender
+                                </p>
+                                <p>
+                                    {singlePerson.gender === 2 ? "Male" : "Female"}
+                                </p>
+                            </div>
 
 
-                        <div>
-                            <p className="text-[16px] font-[600] mt-2 ">
-                                Place of Birth
-                            </p>
-                            <p>
-                                {singlePerson.place_of_birth}
-                            </p>
-                        </div>
+                            <div>
+                                <p className="text-[16px] font-[600] mt-2 ">
+                                    Birthday
+                                </p>
+                                <p>
+                                    {formattedDate} ({age} years old)
+                                </p>
+                            </div>
 
 
-                        <div>
-                            <p className="text-[16px] font-[600] mt-2 ">
-                                Also Known As
-                            </p>
-                            <p>
-                                {singlePerson?.also_known_as?.map((item, index) => {
-                                    return (
-                                        <p key={index}>
-                                            {item}
-                                        </p>
-                                    )
-                                }) }
-                            </p>
+                            <div>
+                                <p className="text-[16px] font-[600] mt-2 ">
+                                    Place of Birth
+                                </p>
+                                <p>
+                                    {singlePerson.place_of_birth}
+                                </p>
+                            </div>
+
+
+                            <div>
+                                <p className="text-[16px] font-[600] mt-2 ">
+                                    Also Known As
+                                </p>
+                                <p>
+                                    {singlePerson?.also_known_as?.map((item, index) => {
+                                        return (
+                                            <p key={index}>
+                                                {item}
+                                            </p>
+                                        )
+                                    })}
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="info w-[890px]">
+                    <div className="info xl:w-[890px] w-full">
                         <p className="text-[35.2px] font-[700]">
                             {singlePerson.name}
                         </p>
@@ -140,7 +142,7 @@ export default function SinglePerson() {
                                     Known For
                                 </p>
 
-                                <div className="flex overflow-hidden gap-3 overflow-x-auto pb-5 w-[890px]">
+                                <div className="flex overflow-hidden gap-3 overflow-x-auto pb-5 w-full xl:w-[890px]">
                                     {
                                         singlePersonCast.map((item, index) => {
                                             return (

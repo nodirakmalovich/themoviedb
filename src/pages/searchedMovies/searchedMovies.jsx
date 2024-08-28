@@ -65,10 +65,10 @@ export default function SearchedMovies() {
                 </div>
             </div>
 
-            <div className='flex gap-[30px] my-container pt-[50px] px-10'>
-                <div className="leftside w-[300px]">
+            <div className='flex flex-wrap xl:flex-nowrap gap-[30px] my-container pt-[50px] px-10'>
+                <div className="leftside xl:w-[300px] w-full">
 
-                    <div className="leftside_wrapper w-[260px] border-[#e3e3e3] border-[1px] rounded-[8px]">
+                    <div className="leftside_wrapper xl:w-[260px] w-full border-[#e3e3e3] border-[1px] rounded-[8px]">
                         <div className="leftside_wrapper_header bg-[#01b3e4] p-5 text-white font-semibold rounded-t-[8px]">
                             Search Results
                         </div>

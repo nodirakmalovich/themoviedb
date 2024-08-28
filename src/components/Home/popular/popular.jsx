@@ -4,12 +4,14 @@ import { format } from 'date-fns';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import MainCard from "../../mainCard/mainCard";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 
 
 export default function PopularMovies() {
 
+    const {t} = useTranslation()
 
     const route = useNavigate();
     const { PopularMoviesData } = UseData()
@@ -42,7 +44,7 @@ export default function PopularMovies() {
     return (
         <div className="my-container px-10 pt-[400px]">
             <div className="flex gap-[20px] items-center">
-                <p className="text-2xl text-black font-semibold">What's Popular</p>
+                <p className="text-2xl text-black font-semibold">{t("What's Popular")}</p>
 
                 <div className="flex  justify-center ">
                     <div className=" h-[28px] border-[#032541] border-[1px] rounded-[30px] flex items-center justify-between">
@@ -65,7 +67,7 @@ export default function PopularMovies() {
             </div>
 
 
-            <div className=" flex py-5 overflow-x-auto gap-[20px] scrolling">
+            <div className=" flex py-5 overflow-x-auto gap-[20px]  overflow-hidden">
 
                 {
                     PopularMoviesData?.map((movie, index) => {

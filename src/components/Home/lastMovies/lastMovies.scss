@@ -9,3 +9,32 @@
         transition: 0.5s ease-in-out;
     }
 }
+
+.movieCard {
+    box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+}
+
+@media screen and (max-width: 1300px) {
+    .movieCard {
+        justify-content: space-around;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .movieCard {
+        gap: 10px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .movieCard {
+        gap: 5px;
+    }
+}

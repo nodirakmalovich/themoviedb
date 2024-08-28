@@ -3,24 +3,29 @@ import './trandingMovies.scss'
 import { Tab, TabGroup, TabList } from '@headlessui/react'
 import MainCard from "../../mainCard/mainCard";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "../../../i18n";
 
 
 
 export default function TrendingMovies() {
 
     const { trendingMoviesData, getTrendingMovies } = UseData()
+    
+    const {t} = useTranslation()
+
 
     const route = useNavigate();
 
 
     const categories = [
         {
-            name: 'Today',
+            name: i18n.t('Today'),
             action: 'day'
 
         },
         {
-            name: 'This Week',
+            name: i18n.t('This Week'),
             action: 'week'
         },
 
@@ -43,8 +48,8 @@ export default function TrendingMovies() {
 
                 <div className="flex  justify-center items-center gap-5">
 
-                    <p className="text-2xl text-black font-semibold">Trending</p>
-                    <div className=" h-[28px] border-[#032541] border-[1px] rounded-[30px] flex items-center justify-between">
+                    <p className="text-2xl text-black font-semibold">{t("Trending")}</p>
+                    <div className="hidden h-[28px] border-[#032541] border-[1px] rounded-[30px] md:flex items-center justify-between">
                         <TabGroup onChange={(index) => handleTabChange(categories[index].action)}>
                             <TabList className="flex gap-4">
                                 <div className='items-center flex gap-[20px]'>

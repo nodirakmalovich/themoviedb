@@ -16,7 +16,7 @@ export default function SearchedMovieCard({ imageSrc, altText, title, releaseDat
                 <img
                     src={imageUrl + imageSrc}
                     alt={altText}
-                    className="w-[94px] h-[141px] rounded-l-[8px]"
+                    className="w-[94px] lg:h-[141px] object-cover rounded-l-[8px]"
                 />
                 <div className="searchedmovie_card_wrapper_body py-[10px] px-[15px]">
                     <div className="searchedmovie_card_wrapper_body_title">

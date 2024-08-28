@@ -2,6 +2,7 @@ import UseData from "../../hooks/useData"
 import MovieCardSec from "../../components/movieCard/movieCard";
 import Category from "../../components/categry/categry";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function NowPlayingMovies() {
 
@@ -9,6 +10,7 @@ export default function NowPlayingMovies() {
 
     const { nowPlayingMovies } = UseData()
     const route = useNavigate();
+    const {t} = useTranslation()
 
     function handleSingleMovie(movieId) {
 
@@ -20,16 +22,16 @@ export default function NowPlayingMovies() {
         <div className="">
 
             <div className="popular my-container px-10 py-[30px]">
-                <h1 className="text-[1.6em] font-semibold">Popuar movies</h1>
+                <h1 className="text-[1.6em] font-semibold">{t("Now Playing Movies")}</h1>
 
                 <div className="popular_row flex flex-wrap justify-between gap-[30px]">
 
-                    <div className="popular_left w-[260px] ">
+                    <div className="popular_left xl:w-[260px] w-full ">
                         <Category />
                     </div>
 
-                    <div className="popular_right w-[75%]">
-                        <div className="popular_right_wrapper grid grid-cols-5 gap-[30px] justify-between">
+                    <div className="popular_right xl:w-[75%] w-full">
+                        <div className="popular_right_wrapper grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2  gap-[30px] justify-between">
                             {
                                 nowPlayingMovies.map((movie, index) => {
                                     return (

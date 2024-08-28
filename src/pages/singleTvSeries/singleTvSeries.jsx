@@ -11,22 +11,22 @@ export default function SingleTvSeries() {
         <div key={singleTvSeries.id}>
             <singlemoviCategoryCategory />
 
-            <div className="relative box-border h-[655px] ">
-                <div className="back absolute z-0 top-0 left-0 right-0 bottom-0 bg-gray-500/50"></div>
+            <div className="relative box-border xl:h-[655px] ">
+                <div className="back absolute z-0 top-0 left-0 right-0 bottom-0 bg-black xl:bg-gray-500/50"></div>
                 <div className="image relative ">
-                    <img className="absolute w-full object-cover z-[-10] h-[655px]" src={imageUrl + singleTvSeries.backdrop_path} alt={singleTvSeries.title} />
+                    <img className="absolute w-full object-cover z-[-10] xl:h-[655px] xl:block hidden" src={imageUrl + singleTvSeries.backdrop_path} alt={singleTvSeries.title} />
                 </div>
-                <div className="my-container px-10  py-[30px] z-[0] relative flex justify-between flex-wrap">
+                <div className="my-container px-10  py-[30px] z-[0] relative flex lg:justify-between justify-center  flex-wrap">
 
-                    <div className="movie w-[25%]">
+                    <div className="movie md:w-[25%]">
                         <img className="w-[300px] h-[450px] rounded-lg" src={imageUrl + singleTvSeries.poster_path} alt={singleTvSeries.title} />
 
                     </div>
 
-                    <div className="w-[73%]">
+                    <div className="md:w-[73%]">
 
                         <p className="text-[35.2px] font-[700] text-white hover:text-gray-400 cursor-pointer">
-                            {singleTvSeries.title} <span>({singleTvSeries.release_date?.slice(0, 4)})</span>
+                            {singleTvSeries.name} <span>({singleTvSeries.first_air_date?.slice(0, 4)})</span>
                         </p>
                         <div >
 
@@ -78,7 +78,7 @@ export default function SingleTvSeries() {
                                 }
                             </p>
                         </div>
-                        <div className="mt-6 grid grid-cols-3 gap-5">
+                        <div className="mt-6 lg:grid grid-cols-3 gap-5 hidden">
                             {
                                 singleTvSeriesCrew?.slice(0, 11).map((item, index) => {
                                     return (
@@ -103,8 +103,8 @@ export default function SingleTvSeries() {
                     Top Billed Cast
                 </div>
 
-                <div className="row flex items-start">
-                    <div className="cast flex overflow-hidden gap-3 overflow-x-auto pb-5 w-[90%]">
+                <div className="row md:flex items-start">
+                    <div className="cast flex overflow-hidden gap-3 overflow-x-auto pb-5 md:w-[90%]">
                         {
                             singleTvseriesCast?.map((item, index) => {
                                 return (
@@ -121,7 +121,7 @@ export default function SingleTvSeries() {
                         }
                     </div>
 
-                    <div className="info w-[25%] ps-5">
+                    <div className="info w-[25%] ps-5 hidden md:block">
                         <p className='font-semibold mt-3'>
                             Status
                             <br />

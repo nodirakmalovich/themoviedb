@@ -1,32 +1,61 @@
 .navbar_menu {
 
-    &_item {
-        position: relative;
-        font-weight: 400;
+  &_item {
+    position: relative;
+    font-weight: 400;
 
-        &_menu {
-            width: 190px;
-            max-height: 276.4px;
-            overflow: auto;
-            position: absolute;
-            font-size: 16px;
-            font-stretch: 100%;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
-            display: none;
-            transform: translateY(0px);
-            background-color: white;
-            border-radius: 4px;
-            padding: 8px 24px;
-            top: 100%;
-            left: 0;
-            border: 1px solid lightgray;
-        }
-
-        .navbar_menu_item:hover &_menu {
-            display: block;
-        }
-
+    &_menu {
+      width: 190px;
+      max-height: 276.4px;
+      overflow: auto;
+      position: absolute;
+      font-size: 16px;
+      font-stretch: 100%;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      display: none;
+      transform: translateY(0px);
+      background-color: white;
+      border-radius: 4px;
+      padding: 8px 24px;
+      top: 100%;
+      left: 0;
+      border: 1px solid lightgray;
     }
+
+    .navbar_menu_item:hover &_menu {
+      display: block;
+    }
+
+  }
+}
+
+.hidden_menu {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-out;
+  z-index: 99;
+}
+
+
+.navbar_toggle {
+  display: none;
+}
+
+@media screen and (max-width: 840px) {
+
+  .navbar_menu,
+  .hide_menu {
+    display: none;
+  }
+
+  .navbar_toggle {
+    display: block;
+  }
 }

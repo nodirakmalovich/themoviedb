@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import UseData from '../../../hooks/useData'
 import './hero.scss'
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
 
     const { moviesData, imageUrl, discoverMoviesData } = UseData()
 
     const [randomIndex, setRandomIndex] = useState(null);
+
+    const {t} = useTranslation()
 
     const searchRef = useRef()
     const route = useNavigate()
@@ -32,7 +35,7 @@ export default function Hero() {
 
 
     return (
-        <div className='my-container'>
+        <div className='my-container lg:w-full'>
             <div className="hero h-[300px] flex items-center p-0 m-0   relative">
 
 
@@ -48,19 +51,19 @@ export default function Hero() {
 
                     <div className='hero_row  w-full  z-30'>
                         <h1 className='text-[48px] leading-none	 font-[700] text-white'>
-                            Welcome.
+                            {t('Welcome.')}
                         </h1>
                         <p className='text-[32px] leading-none	pb-[30px] font-semibold text-white mb-5'>
-                            Millions of movies, TV shows and people to discover. Explore now.
+                            {t("Millions of movies, TV shows and people to discover. Explore now.")}
                         </p>
 
                         <form className='relative '>
                             <label>
-                                <input ref={searchRef}  className='hero_row_input ' type="text" placeholder='Search for a movie, tv show, person......' />
+                                <input ref={searchRef}  className='hero_row_input ' type="text" placeholder={t('Search for a movie, tv show, person......')} />
 
                             </label>
 
-                            <input onClick={searchHandle} className='absolute top-0 z-10 hero_row_input_search ' type="submit" value={"Search"} />
+                            <input onClick={searchHandle} className='absolute top-0 z-10 hero_row_input_search ' type="submit" value={t("Search")} />
 
                         </form>
                     </div>

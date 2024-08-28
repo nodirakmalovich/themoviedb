@@ -190,7 +190,6 @@ export default function UseData() {
 
     function getSingleMovie() {
         if (!params.movieId) {
-            console.warn("Moive Id is missing");
             return;
         }
 
@@ -235,7 +234,6 @@ export default function UseData() {
 
     function getSingleMovieCast() {
         if (!params.movieId) {
-            console.warn("Moive Id is missing");
             return;
         }
 
@@ -249,7 +247,7 @@ export default function UseData() {
             });
 
 
-        axios.get(`https://api.themoviedb.org/3/tv/${params.movieId.replace(':', '')}/credits?api_key=${API_KEY}`)
+        axios.get(`https://api.themoviedb.org/3/tv/${params.movieId}/credits?api_key=${API_KEY}`)
             .then(res => {
                 setSingleTvSeriesCrew(res?.data.crew)
                 setSingleTvseriesCast(res?.data.cast)
@@ -257,52 +255,51 @@ export default function UseData() {
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
+
     }
 
     function getKeywords() {
 
-        axios.get(`https://api.themoviedb.org/3/movie/${params.movieId.replace(':', '')}/keywords?api_key=${API_KEY}`)
+        axios.get(`https://api.themoviedb.org/3/movie/${params.movieId}/keywords?api_key=${API_KEY}`)
             .then(res => {
                 setKeywords(res?.data.keywords)
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
+
     }
 
     function getSinglePerson() {
         if (!params.movieId) {
-            console.warn("person's Id is missing");
             return;
         }
 
-        axios.get(`https://api.themoviedb.org/3/person/${params.movieId.replace(':', '')}?api_key=${API_KEY}`)
+        axios.get(`https://api.themoviedb.org/3/person/${params.movieId}?api_key=${API_KEY}`)
             .then(res => {
                 setSinglePerson(res?.data)
-                console.log(res);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
 
 
-        axios.get(`https://api.themoviedb.org/3/person/${params.movieId.replace(':', '')}/movie_credits?api_key=${API_KEY}`)
+
+        axios.get(`https://api.themoviedb.org/3/person/${params.movieId}/movie_credits?api_key=${API_KEY}`)
             .then(res => {
                 setSinglePersonCast(res?.data.cast)
-                console.log(res);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
             });
     }
 
-    
 
-    
+
+
 
     useEffect(() => {
         if (!params.movieId) {
-            console.warn("Person's Id is missing");
             return;
         }
         getSinglePerson();
@@ -310,7 +307,6 @@ export default function UseData() {
 
     useEffect(() => {
         if (!params.movieId) {
-            console.warn("Movie Id is missing");
             return;
         }
         getKeywords();

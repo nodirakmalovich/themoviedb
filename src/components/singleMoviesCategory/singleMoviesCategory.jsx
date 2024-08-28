@@ -24,7 +24,7 @@ export default function SingleMoviesCategory() {
 
     return (
         <div>
-            <ul className="flex gap-5 justify-center items-center w-full">
+            <ul className="md:flex gap-5 justify-center items-center w-full hidden ">
                 {
                     category.map((item, index) => {
                         return (

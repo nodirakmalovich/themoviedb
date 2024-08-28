@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -11,7 +17,16 @@ body {
     margin: 0 auto !important;
 }
 
+@media screen and (max-width: 1300px){
+    .my-container{
+        width: 100% !important;
+        
+    }
+
+}
+
 img {
     object-fit: cover;
     cursor: pointer;
 }
+
