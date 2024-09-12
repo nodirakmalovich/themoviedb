@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 function Navbar() {
 
 
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const route = useNavigate();
   const dispatch = useDispatch();
   const currentLanguage = useSelector((state) => state.language.language);

@@ -55,7 +55,7 @@ export default function LastMovies() {
 
                     <div className="last_movies_row_bg absolute z-10 bg-[#0000009d] top-0 bottom-0 left-0 right-0 h-[369px]"></div>
 
-                    <div className="last_movies_row_wrapper box-border absolute pt-[30px] z-20 ">
+                    <div className="last_movies_row_wrapper w-[100%] box-border absolute pt-[30px] z-20 ">
 
                         <div className="flex gap-[20px] items-center px-10 ">
                             <p className="text-2xl text-white font-semibold">{t("Latest Trailers")}</p>
@@ -80,7 +80,7 @@ export default function LastMovies() {
 
                         </div>
 
-                        <div className="flex py-5 gap-[20px] lastMovies_row ps-10 w-[1300px] overflow-x-auto h-[316px] overflow-hidden movieCard">
+                        <div className="flex justify-center py-5 gap-[20px] lastMovies_row ps-10 sm:w-[640px] md:w-[768px] lg:w-[1024] xl:w-[1280px] 2xl:w-[1300px] overflow-x-auto h-[316px] overflow-hidden movieCard">
                             {
                                 latestMoviesData.map((movie, index) => {
                                     return (
